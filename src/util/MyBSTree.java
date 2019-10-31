@@ -7,6 +7,7 @@ package util;
 
 import entity.Product;
 import java.util.List;
+import javax.swing.tree.TreeNode;
 
 /**
  *
@@ -23,28 +24,53 @@ public class MyBSTree {
 
     //visit a node of a tree -> output information of visited node
     public void visit(Node<Product> p) {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+        if (p != null) {
+            System.out.print(p.info + " ");
+        }
     }
-    
+
     //return true if tree is empty otherwise return false
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+        if (root == null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     //inorder a tree
     public void inOrder() {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+        inOrderTree(root);
+    }
+
+    public void inOrderTree(Node<Product> root) {
+        if (root == null) {
+            return;
+        }
+        inOrderTree(root.left);
+        System.out.println(root.info + " ");
+        inOrderTree(root.right);
     }
 
     //count number of products
     public int count() {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+        return getfullCount(root);
     }
+
+    public int getfullCount(Node<Product> root) {
+        if (root == null) {
+            return 0;
+        }
+        int res = 1;
+        res += (getfullCount(root.left) + getfullCount(root.right));
+        return res;
+    }
+    
     //breadth-first traverse a tree
     public void BFT() {
         throw new UnsupportedOperationException("Remove this line and implement your code here!");
     }
-    
+
     //insert a new Product to a tree
     public void insert(Product product) {
         throw new UnsupportedOperationException("Remove this line and implement your code here!");
@@ -71,7 +97,7 @@ public class MyBSTree {
     public Node<Product> search(String code) {
         throw new UnsupportedOperationException("Remove this line and implement your code here!");
     }
- 
+
     //delete a node by a given product code
     public void delete(String code) {
         throw new UnsupportedOperationException("Remove this line and implement your code here!");
