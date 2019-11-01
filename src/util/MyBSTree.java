@@ -6,6 +6,7 @@
 package util;
 
 import entity.Product;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.tree.TreeNode;
 
@@ -118,22 +119,53 @@ public class MyBSTree {
     //step 1: traverse inorder tree and copy all item on tree to an arraylist
     //step 2: insert all items of list to a tree
     private void buildArray(List<Node<Product>> list, Node<Product> p) {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+        if(p == null){
+            return;
+        }
+        buildArray(list, p.left);
+        list.add(p);
+        buildArray(list, p.right);
     }
 
     //step 2:
     private void balance(List<Node<Product>> list, int f, int l) {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+        if(f > l){
+            return;
+        }
+        int mid = (f + l)/2;
+        Node<Product> p = list.get(mid);
+        insert(p.info);
+        balance(list,f,mid -1);
+        balance(list,mid + 1,l);
     }
-
+    
     public void balance() {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+        List<Node<Product>> list = new ArrayList<>();
+        buildArray(list, root);
+        MyBSTree tree = new MyBSTree();
+        tree.balance(list,0,list.size() - 1);
+        root = tree.root;
     }
 
     //search a Node of tree by product code
     //return null if given code does not exists
     public Node<Product> search(String code) {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+        if(isEmpty()){
+            return null;
+        }
+        Node<Product> p = root;
+        while(p !=null){
+            if(p.info.getCode().equalsIgnoreCase(code)){
+                break;
+            }
+            if(p.info.getCode().compareToIgnoreCase(code) < 0){
+                p = p.right;
+            }
+            else{
+                p = p.left;
+            }
+        }
+        return p;
     }
 
     //delete a node by a given product code
