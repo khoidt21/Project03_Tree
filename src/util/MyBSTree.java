@@ -168,11 +168,11 @@ public class MyBSTree {
     }
 
     //delete a node by a given product code
-    /*
+    
     public void delete(String code) {
          root = deleteRec(root, code); 
     }
-    */
+    
    
     Node deleteRec(Node<Product> root, String key) {
         /* Base Case: If the tree is empty */
@@ -196,22 +196,22 @@ public class MyBSTree {
 
             // node with two children: Get the inorder successor (smallest 
             // in the right subtree) 
-          //  root.key = minValue(root.right);
+            root.info= minValue(root.right);
 
             // Delete the inorder successor 
-           // root.right = deleteRec(root.right, root.key);
+            root.right = deleteRec(root.right, root.info.getCode());
         }
 
         return root;
     }
-    /*
-    int minValue(Node<Product> root) {
-        int minv = root.key;
+    
+    Product minValue(Node<Product> root) {
+        Product minv = root.info;
         while (root.left != null) {
-            minv = root.left.key;
+            minv = root.left.info;
             root = root.left;
         }
         return minv;
     }
-    */
+    
 }

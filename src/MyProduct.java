@@ -122,7 +122,13 @@ public class MyProduct {
     //1.5 delete a product by product code
 
     public void delete() {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+        String code;
+        System.out.println("Enter product code to delete:");
+        Scanner input = new Scanner(System.in);
+        code = input.nextLine();
+        tree.delete(code);
+        System.out.println("Product code " + code + "has been deleted");
+        
     }
 
     //1.6 simply balancing a tree

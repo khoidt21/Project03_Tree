@@ -62,7 +62,7 @@ public class Main {
                         break;
                     case 5:
                         // delete
-                        //bookList.addAfter();
+                        myProduct.delete();
                         break;
                     case 6:
                         // simple balancung
