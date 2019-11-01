@@ -26,7 +26,7 @@ public class MyBSTree {
     //visit a node of a tree -> output information of visited node
     public void visit(Node<Product> p) {
         if (p != null) {
-            System.out.print(p.info + " ");
+            System.out.print(p.info + "\n");
         }
     }
 
@@ -97,7 +97,7 @@ public class MyBSTree {
         p = root;
         f = null;
         while (p != null) {
-            if (p.info.getCode().compareTo(root.info.getCode()) == 0) {
+            if (p.info.getCode().compareTo(product.getCode())==0) {
                 System.out.println(" The key " + product + " already exists, no insertion");
                 return;
             }
@@ -168,11 +168,12 @@ public class MyBSTree {
     }
 
     //delete a node by a given product code
+    /*
     public void delete(String code) {
          root = deleteRec(root, code); 
-
     }
-    
+    */
+   
     Node deleteRec(Node<Product> root, String key) {
         /* Base Case: If the tree is empty */
         if (root == null) {
@@ -195,15 +196,15 @@ public class MyBSTree {
 
             // node with two children: Get the inorder successor (smallest 
             // in the right subtree) 
-            root.key = minValue(root.right);
+          //  root.key = minValue(root.right);
 
             // Delete the inorder successor 
-            root.right = deleteRec(root.right, root.key);
+           // root.right = deleteRec(root.right, root.key);
         }
 
         return root;
     }
-
+    /*
     int minValue(Node<Product> root) {
         int minv = root.key;
         while (root.left != null) {
@@ -212,5 +213,5 @@ public class MyBSTree {
         }
         return minv;
     }
-
+    */
 }
