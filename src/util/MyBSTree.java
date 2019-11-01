@@ -119,7 +119,7 @@ public class MyBSTree {
     //step 1: traverse inorder tree and copy all item on tree to an arraylist
     //step 2: insert all items of list to a tree
     private void buildArray(List<Node<Product>> list, Node<Product> p) {
-        if(p == null){
+        if (p == null) {
             return;
         }
         buildArray(list, p.left);
@@ -129,39 +129,38 @@ public class MyBSTree {
 
     //step 2:
     private void balance(List<Node<Product>> list, int f, int l) {
-        if(f > l){
+        if (f > l) {
             return;
         }
-        int mid = (f + l)/2;
+        int mid = (f + l) / 2;
         Node<Product> p = list.get(mid);
         insert(p.info);
-        balance(list,f,mid -1);
-        balance(list,mid + 1,l);
+        balance(list, f, mid - 1);
+        balance(list, mid + 1, l);
     }
-    
+
     public void balance() {
         List<Node<Product>> list = new ArrayList<>();
         buildArray(list, root);
         MyBSTree tree = new MyBSTree();
-        tree.balance(list,0,list.size() - 1);
+        tree.balance(list, 0, list.size() - 1);
         root = tree.root;
     }
 
     //search a Node of tree by product code
     //return null if given code does not exists
     public Node<Product> search(String code) {
-        if(isEmpty()){
+        if (isEmpty()) {
             return null;
         }
         Node<Product> p = root;
-        while(p !=null){
-            if(p.info.getCode().equalsIgnoreCase(code)){
+        while (p != null) {
+            if (p.info.getCode().equalsIgnoreCase(code)) {
                 break;
             }
-            if(p.info.getCode().compareToIgnoreCase(code) < 0){
+            if (p.info.getCode().compareToIgnoreCase(code) < 0) {
                 p = p.right;
-            }
-            else{
+            } else {
                 p = p.left;
             }
         }
@@ -170,7 +169,48 @@ public class MyBSTree {
 
     //delete a node by a given product code
     public void delete(String code) {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+         root = deleteRec(root, code); 
+
+    }
+    
+    Node deleteRec(Node<Product> root, String key) {
+        /* Base Case: If the tree is empty */
+        if (root == null) {
+            return root;
+        }
+        /* Otherwise, recur down the tree */
+        if (key.compareTo(root.info.getCode()) < 0) {
+            root.left = deleteRec(root.left, key);
+        } else if (key.compareTo(root.info.getCode()) < 0) {
+            root.right = deleteRec(root.right, key);
+        } // if key is same as root's key, then This is the node 
+        // to be deleted 
+        else {
+            // node with only one child or no child 
+            if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            }
+
+            // node with two children: Get the inorder successor (smallest 
+            // in the right subtree) 
+            root.key = minValue(root.right);
+
+            // Delete the inorder successor 
+            root.right = deleteRec(root.right, root.key);
+        }
+
+        return root;
+    }
+
+    int minValue(Node<Product> root) {
+        int minv = root.key;
+        while (root.left != null) {
+            minv = root.left.key;
+            root = root.left;
+        }
+        return minv;
     }
 
 }
