@@ -65,15 +65,53 @@ public class MyBSTree {
         res += (getfullCount(root.left) + getfullCount(root.right));
         return res;
     }
-    
+
     //breadth-first traverse a tree
     public void BFT() {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+        if (root == null) {
+            return;
+        }
+        MyQueue q = new MyQueue();
+        q.enqueue(root);
+        Node<Product> p;
+        while (!q.isEmpty()) {
+            p = (Node<Product>) q.dequeue();
+            if (p.left != null) {
+                q.enqueue(p.left);
+            }
+            if (p.right != null) {
+                q.enqueue(p.right);
+            }
+            visit(p);
+        }
     }
 
     //insert a new Product to a tree
     public void insert(Product product) {
-        throw new UnsupportedOperationException("Remove this line and implement your code here!");
+        if (root == null) {
+            root = new Node(product);
+            return;
+        }
+        Node<Product> f, p;
+        p = root;
+        f = null;
+        while (p != null) {
+            if (p.info.getCode().compareTo(root.info.getCode()) == 0) {
+                System.out.println(" The key " + product + " already exists, no insertion");
+                return;
+            }
+            f = p;
+            if (product.getCode().compareTo(p.info.getCode()) < 0) {
+                p = p.left;
+            } else {
+                p = p.right;
+            }
+        }
+        if (product.getCode().compareTo(f.info.getCode()) < 0) {
+            f.left = new Node(product);
+        } else {
+            f.right = new Node(product);
+        }
     }
 
     //balance a tree
