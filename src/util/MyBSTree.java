@@ -53,19 +53,20 @@ public class MyBSTree {
         inOrderTree(root.right);
     }
 
-    public void searchInOrderPrice(double price) {
-        
+    public MyBSTree searchInOrderPrice(double price) {
+        // tieu chi 2 nang cao tao cay nhi phan moi
         MyBSTree myBSTree = new MyBSTree();
-        myBSTree.inOrderTreeSearchPrice(root, price);
+        inOrderTreeSearchPrice(root,price,myBSTree);
+        return myBSTree;
     }
-    public void inOrderTreeSearchPrice(Node<Product> root, double price) {
+    public void inOrderTreeSearchPrice(Node<Product> root, double price,MyBSTree myBSTree) {
         if (root == null) {
             return;
         }
         
         inOrderTree(root.left);
         if (root.info.getPrice() >= price) {
-            System.out.println(root.info + " ");
+            myBSTree.insert(root.info);
         }
         inOrderTree(root.right);
     }
