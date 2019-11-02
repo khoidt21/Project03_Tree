@@ -127,7 +127,7 @@ public class MyProduct {
         Scanner input = new Scanner(System.in);
         code = input.nextLine();
         tree.delete(code);
-        System.out.println("Product code " + code + "has been deleted");
+        System.out.println("Product code " + code + " " + "has been deleted");
         
     }
 
