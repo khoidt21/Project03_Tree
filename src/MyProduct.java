@@ -17,6 +17,11 @@ public class MyProduct {
 
     //a list of products
     MyBSTree tree;
+    String c_code = "Code";
+    String c_name = "Name";
+    String c_quantity = "Quantity";
+    String c_saled = "Saled";
+    String c_price = "Price";
 
     public MyProduct() {
         tree = new MyBSTree();
@@ -94,6 +99,8 @@ public class MyProduct {
 
     //1.2 in-order traverse
     public void inOrder() {
+
+        System.out.println(String.format("%s %9s %23s %6s %9s", c_code, c_name, c_quantity, c_saled, c_price));
         tree.inOrder();
     }
 
@@ -137,9 +144,9 @@ public class MyProduct {
         System.out.println("Inforation of product price " + price);
         tree.searchInOrderPrice(price).inOrder();
     }
-    
 
     //1.5 delete a product by product code
+
     public void delete() {
         String code;
         System.out.println("Enter product code to delete:");
@@ -164,4 +171,11 @@ public class MyProduct {
     public void printSizeProducts() {
         System.out.println("Number of products " + size());
     }
+
+    // calPrintTreeHeight
+
+    public void calPrintTreeHeight() {
+        tree.calPrintTreeHeight(0);
+    }
+
 }

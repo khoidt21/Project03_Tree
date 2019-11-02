@@ -33,13 +33,14 @@ public class Main {
             System.out.println("6. Simple balancing");
             System.out.println("7. Count number of products");
             System.out.println("8. Search product the price is higher or equal to the price provided");
+            System.out.println("9. Calculate show root of tree width height");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             try {
                 choice = input.nextInt();
-                if (choice < 1 || choice > 8) {
-                    System.out.printf("You have not entered a number between 0 and 8. " + "Try again.\n");
-                    System.out.printf("Enter your choice between 0 and 8 only: \n");
+                if (choice < 1 || choice > 9) {
+                    System.out.printf("You have not entered a number between 0 and 9. " + "Try again.\n");
+                    System.out.printf("Enter your choice between 0 and 9 only: \n");
                     continue;
                 }
 
@@ -76,6 +77,10 @@ public class Main {
                     case 8:
                         // search by price 
                         myProduct.searchPrice();
+                        break;
+                    case 9:
+                        // show root width height
+                        myProduct.calPrintTreeHeight();
                         break;
                     case 0:
                         System.out.println("Exiting Program...");

@@ -42,7 +42,7 @@ public class MyBSTree {
     //inorder a tree
     public void inOrder() {
         inOrderTree(root);
-        
+
     }
 
     public void inOrderTree(Node<Product> root) {
@@ -57,20 +57,21 @@ public class MyBSTree {
     public MyBSTree searchInOrderPrice(double price) {
         // tieu chi 2 nang cao tao cay nhi phan moi
         MyBSTree myBSTree = new MyBSTree();
-        inOrderTreeSearchPrice(root,price,myBSTree);
+        inOrderTreeSearchPrice(root, price, myBSTree);
         return myBSTree;
     }
-    public void inOrderTreeSearchPrice(Node<Product> root, double price,MyBSTree myBSTree) {
+
+    public void inOrderTreeSearchPrice(Node<Product> root, double price, MyBSTree myBSTree) {
         if (root == null) {
             return;
         }
-        
-        inOrderTreeSearchPrice(root.left,price,myBSTree);
+
+        inOrderTreeSearchPrice(root.left, price, myBSTree);
         if (root.info.getPrice() >= price) {
-            
+
             myBSTree.insert(root.info);
         }
-        inOrderTreeSearchPrice(root.right,price,myBSTree);
+        inOrderTreeSearchPrice(root.right, price, myBSTree);
     }
 
     //count number of products
@@ -133,6 +134,24 @@ public class MyBSTree {
         } else {
             f.right = new Node(product);
         }
+    }
+
+    // phuong thuc cho tieu chi nang cao 3
+    
+    public void calPrintTreeHeight(int height){
+        calMyBSTTreeHeight(root, height);
+    }
+    
+    public void calMyBSTTreeHeight(Node<Product> root, int height) {
+        if (root == null) {
+            return;
+        }
+        root.height = height;
+        calMyBSTTreeHeight(root.left, height + 1);
+        System.out.println(root.info + " " +  root.height + " ");
+        calMyBSTTreeHeight(root.right, height + 1);
+        
+
     }
 
     //balance a tree

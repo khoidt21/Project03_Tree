@@ -12,6 +12,10 @@ package util;
 public class Node<T> {
     
     public T info;
+    // them thuoc tinh height cho tieu chi nang cao 3
+    
+    public int height;
+    
     public Node<T> left, right;
 
     public Node() {
