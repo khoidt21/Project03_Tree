@@ -208,9 +208,7 @@ public class MyBSTree {
     public Product productDelete;
 
     public void delete(String code) {
-        
         root = deleteRec(root, code);
-
     }
 
     Node deleteRec(Node<Product> root, String key) {

@@ -160,7 +160,7 @@ public class MyProduct {
         else{
             System.out.println("Product code " + code + " " + "is not in system");
         }
-        
+       // System.out.println(tree.productDelete);
     }
 
     //1.6 simply balancing a tree
