@@ -60,18 +60,18 @@ public class MyBSTree {
         inOrderTreeSearchPrice(root, price, myBSTree);
         return myBSTree;
     }
-
+    
     public void inOrderTreeSearchPrice(Node<Product> root, double price, MyBSTree myBSTree) {
         // tieu chi 1 nang cao
         if (root == null) {
             return;
         }
-
         inOrderTreeSearchPrice(root.left, price, myBSTree);
         if (root.info.getPrice() >= price) {
-
+           // System.out.println("Information of product price " + price);
             myBSTree.insert(root.info);
         }
+        
         inOrderTreeSearchPrice(root.right, price, myBSTree);
     }
 

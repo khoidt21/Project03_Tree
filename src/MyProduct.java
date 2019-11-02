@@ -123,7 +123,7 @@ public class MyProduct {
         code = input.nextLine();
 
         if (tree.search(code) != null) {
-            System.out.println("Inforation of product code " + code);
+            System.out.println("Information of product code " + code);
             System.out.println(tree.search(code).info);
         } else {
             System.out.println("Product is not in system.");
@@ -147,7 +147,7 @@ public class MyProduct {
                 input.nextLine();
             }
         } while (check);
-        System.out.println("Inforation of product price " + price);
+        
         tree.searchInOrderPrice(price).inOrder();
     }
 
