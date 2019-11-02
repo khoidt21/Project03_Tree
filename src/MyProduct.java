@@ -98,13 +98,11 @@ public class MyProduct {
     }
 
     //1.3 BFT a tree
-
     public void BFT() {
         tree.BFT();
     }
 
     //1.4 search a product by product code
-
     public void search() {
         String code;
         System.out.println("Enter product code to search:");
@@ -118,19 +116,30 @@ public class MyProduct {
             System.out.println("Product is not in system.");
         }
     }
-    public void searchPrice(){
-        double price;
-        System.out.println("Enter product price to search:");
+
+    public void searchPrice() {
+        double price = 0;
+        boolean check = true;
         Scanner input = new Scanner(System.in);
-        price = input.nextDouble();
-        
+        do {
+            try {
+                System.out.println("Enter product price to search:");
+
+                price = input.nextDouble();
+                check = false;
+                input.nextLine();
+            } catch (InputMismatchException ex) {
+                System.out.println("Price is number.Input price");
+                check = true;
+                input.nextLine();
+            }
+        } while (check);
         System.out.println("Inforation of product price " + price);
         tree.searchInOrderPrice(price);
-        
+
     }
 
     //1.5 delete a product by product code
-
     public void delete() {
         String code;
         System.out.println("Enter product code to delete:");
@@ -138,22 +147,21 @@ public class MyProduct {
         code = input.nextLine();
         tree.delete(code);
         System.out.println("Product code " + code + " " + "has been deleted");
-        
+
     }
 
     //1.6 simply balancing a tree
-
     public void balance() {
         tree.balance();
     }
 
     //1.7 count the number of products in the tree
-
     public int size() {
-       return tree.count();
+        return tree.count();
     }
+
     // print size products in the tree
-    public void printSizeProducts(){
-        System.out.println("Number of products " + size()); 
+    public void printSizeProducts() {
+        System.out.println("Number of products " + size());
     }
 }
