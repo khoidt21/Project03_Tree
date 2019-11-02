@@ -32,13 +32,14 @@ public class Main {
             System.out.println("5. Delete by a product code");
             System.out.println("6. Simple balancing");
             System.out.println("7. Count number of products");
+            System.out.println("8. Search product by price");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             try {
                 choice = input.nextInt();
-                if (choice < 1 || choice > 7) {
-                    System.out.printf("You have not entered a number between 0 and 7. " + "Try again.\n");
-                    System.out.printf("Enter your choice between 0 and 7 only: \n");
+                if (choice < 1 || choice > 8) {
+                    System.out.printf("You have not entered a number between 0 and 8. " + "Try again.\n");
+                    System.out.printf("Enter your choice between 0 and 8 only: \n");
                     continue;
                 }
 
@@ -71,6 +72,10 @@ public class Main {
                     case 7:
                         // count number of products
                         myProduct.printSizeProducts();
+                        break;
+                    case 8:
+                        // search by price 
+                        myProduct.searchPrice();
                         break;
                     case 0:
                         System.out.println("Exiting Program...");

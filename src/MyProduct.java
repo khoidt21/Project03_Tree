@@ -118,6 +118,16 @@ public class MyProduct {
             System.out.println("Product is not in system.");
         }
     }
+    public void searchPrice(){
+        double price;
+        System.out.println("Enter product price to search:");
+        Scanner input = new Scanner(System.in);
+        price = input.nextDouble();
+        
+        System.out.println("Inforation of product price " + price);
+        tree.searchInOrderPrice(price);
+        
+    }
 
     //1.5 delete a product by product code
 

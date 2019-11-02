@@ -53,6 +53,20 @@ public class MyBSTree {
         inOrderTree(root.right);
     }
 
+    public void searchInOrderPrice(double price) {
+        inOrderTreeSearchPrice(root, price);
+    }
+    public void inOrderTreeSearchPrice(Node<Product> root, double price) {
+        if (root == null) {
+            return;
+        }
+        inOrderTree(root.left);
+        if (root.info.getPrice() >= price) {
+            System.out.println(root.info + " ");
+        }
+        inOrderTree(root.right);
+    }
+
     //count number of products
     public int count() {
         return getfullCount(root);
@@ -97,8 +111,8 @@ public class MyBSTree {
         p = root;
         f = null;
         while (p != null) {
-            if (p.info.getCode().compareTo(product.getCode())==0) {
-                System.out.println(" The key " + product + " already exists, no insertion");
+            if (p.info.getCode().compareTo(product.getCode()) == 0) {
+                System.out.println(" The key " + product.getCode() + " already exists, no insertion");
                 return;
             }
             f = p;
@@ -168,11 +182,10 @@ public class MyBSTree {
     }
 
     //delete a node by a given product code
-    
     public void delete(String code) {
-         root = deleteRec(root, code); 
+        root = deleteRec(root, code);
     }
-    
+
     Node deleteRec(Node<Product> root, String key) {
         if (root == null) {
             return root;
@@ -181,19 +194,18 @@ public class MyBSTree {
             root.left = deleteRec(root.left, key);
         } else if (key.compareTo(root.info.getCode()) < 0) {
             root.right = deleteRec(root.right, key);
-        } 
-        else {
+        } else {
             if (root.left == null) {
                 return root.right;
             } else if (root.right == null) {
                 return root.left;
             }
-            root.info= minValue(root.right);
+            root.info = minValue(root.right);
             root.right = deleteRec(root.right, root.info.getCode());
         }
         return root;
     }
-    
+
     Product minValue(Node<Product> root) {
         Product minv = root.info;
         while (root.left != null) {
@@ -202,5 +214,5 @@ public class MyBSTree {
         }
         return minv;
     }
-    
+
 }
