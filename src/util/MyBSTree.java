@@ -42,6 +42,7 @@ public class MyBSTree {
     //inorder a tree
     public void inOrder() {
         inOrderTree(root);
+        
     }
 
     public void inOrderTree(Node<Product> root) {
@@ -64,11 +65,12 @@ public class MyBSTree {
             return;
         }
         
-        inOrderTree(root.left);
+        inOrderTreeSearchPrice(root.left,price,myBSTree);
         if (root.info.getPrice() >= price) {
+            
             myBSTree.insert(root.info);
         }
-        inOrderTree(root.right);
+        inOrderTreeSearchPrice(root.right,price,myBSTree);
     }
 
     //count number of products
