@@ -99,9 +99,7 @@ public class MyProduct {
             }
 
         } while (check);
-
         tree.insert(product);
-
     }
 
     //1.2 in-order traverse
