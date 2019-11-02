@@ -54,12 +54,15 @@ public class MyBSTree {
     }
 
     public void searchInOrderPrice(double price) {
-        inOrderTreeSearchPrice(root, price);
+        
+        MyBSTree myBSTree = new MyBSTree();
+        myBSTree.inOrderTreeSearchPrice(root, price);
     }
     public void inOrderTreeSearchPrice(Node<Product> root, double price) {
         if (root == null) {
             return;
         }
+        
         inOrderTree(root.left);
         if (root.info.getPrice() >= price) {
             System.out.println(root.info + " ");
