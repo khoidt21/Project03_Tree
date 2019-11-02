@@ -7,6 +7,7 @@
 import entity.Product;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 import util.MyBSTree;
 
 /**
@@ -43,8 +44,13 @@ public class MyProduct {
             System.out.println("Input code: ");
             code = scanner.nextLine();
         }
+        Pattern codePattern = Pattern.compile("^[P]{1}[0-9]{2}$");
+        while (!codePattern.matcher(code).matches()) {
+            System.out.println("Bad input.Try again.Input code by format: P01 or P02 or P03 or P04");
+            code = scanner.nextLine();
+        }
         product.setCode(code);
-
+        
         // name 
         while ((name == null) || (name.trim().isEmpty())) {
             System.out.println("Input name: ");
@@ -154,13 +160,12 @@ public class MyProduct {
         Scanner input = new Scanner(System.in);
         code = input.nextLine();
         tree.delete(code);
-        if(tree.productDelete !=null){
+        if (tree.productDelete != null) {
             System.out.println("Product code " + code + " " + "has been deleted");
-        }
-        else{
+        } else {
             System.out.println("Product code " + code + " " + "is not in system");
         }
-       
+
     }
 
     //1.6 simply balancing a tree
