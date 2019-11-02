@@ -135,7 +135,7 @@ public class MyProduct {
             }
         } while (check);
         System.out.println("Inforation of product price " + price);
-        tree.searchInOrderPrice(price);
+        tree.searchInOrderPrice(price).inOrder();
     }
     
 
