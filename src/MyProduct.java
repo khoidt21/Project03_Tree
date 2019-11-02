@@ -23,7 +23,7 @@ public class MyProduct {
     String c_saled = "Saled";
     String c_price = "Price";
     String c_height = "Height";
-    
+
     public MyProduct() {
         tree = new MyBSTree();
     }
@@ -126,7 +126,7 @@ public class MyProduct {
         }
     }
 
-    public void searchPrice() {
+    public void searchPriceIsHigherOrEqualPriceProvided() {
         double price = 0;
         boolean check = true;
         Scanner input = new Scanner(System.in);
@@ -148,14 +148,18 @@ public class MyProduct {
     }
 
     //1.5 delete a product by product code
-
     public void delete() {
         String code;
         System.out.println("Enter product code to delete:");
         Scanner input = new Scanner(System.in);
         code = input.nextLine();
         tree.delete(code);
-        System.out.println("Product code " + code + " " + "has been deleted");
+        if(tree.productDelete !=null){
+            System.out.println("Product code " + code + " " + "has been deleted");
+        }
+        else{
+            System.out.println("Product code " + code + " " + "is not in system");
+        }
         
     }
 
@@ -175,9 +179,8 @@ public class MyProduct {
     }
 
     // calPrintTreeHeight
-
     public void calPrintTreeHeight() {
-        System.out.println(String.format("%s %9s %23s %6s %9s %11s", c_code, c_name, c_quantity, c_saled, c_price,c_height));
+        System.out.println(String.format("%s %9s %23s %6s %9s %11s", c_code, c_name, c_quantity, c_saled, c_price, c_height));
         tree.calPrintTreeHeight(0);
     }
 

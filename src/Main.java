@@ -75,8 +75,8 @@ public class Main {
                         myProduct.printSizeProducts();
                         break;
                     case 8:
-                        // search by price 
-                        myProduct.searchPrice();
+                        // search by price is higher or equal price provided
+                        myProduct.searchPriceIsHigherOrEqualPriceProvided();
                         break;
                     case 9:
                         // show root width height
