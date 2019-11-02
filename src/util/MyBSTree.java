@@ -54,25 +54,33 @@ public class MyBSTree {
         inOrderTree(root.right);
     }
 
+    MyBSTree searchTree = null;
+
     public MyBSTree searchInOrderPrice(double price) {
         // tieu chi 2 nang cao tao cay nhi phan moi
-        MyBSTree myBSTree = new MyBSTree();
-        inOrderTreeSearchPrice(root, price, myBSTree);
-        return myBSTree;
+        
+        //MyBSTree myBSTree = new MyBSTree();
+        
+        searchTree = null;
+        inOrderTreeSearchPrice(root, price);
+        return searchTree;
     }
-    
-    public void inOrderTreeSearchPrice(Node<Product> root, double price, MyBSTree myBSTree) {
+
+    public void inOrderTreeSearchPrice(Node<Product> root, double price) {
         // tieu chi 1 nang cao
         if (root == null) {
             return;
         }
-        inOrderTreeSearchPrice(root.left, price, myBSTree);
+        inOrderTreeSearchPrice(root.left, price);
         if (root.info.getPrice() >= price) {
-           // System.out.println("Information of product price " + price);
-            myBSTree.insert(root.info);
+            // System.out.println("Information of product price " + price);
+            if(searchTree == null){
+                searchTree = new MyBSTree();
+            }
+            searchTree.insert(root.info);
         }
-        
-        inOrderTreeSearchPrice(root.right, price, myBSTree);
+
+        inOrderTreeSearchPrice(root.right, price);
     }
 
     //count number of products
@@ -224,7 +232,7 @@ public class MyBSTree {
             if (root.left == null) {
                 productDelete = root.info;
                 return root.right;
-                
+
             } else if (root.right == null) {
                 productDelete = root.info;
                 return root.left;

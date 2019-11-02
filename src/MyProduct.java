@@ -148,7 +148,14 @@ public class MyProduct {
             }
         } while (check);
         
-        tree.searchInOrderPrice(price).inOrder();
+       
+        MyBSTree t = tree.searchInOrderPrice(price);
+        if(t == null){
+            System.out.println("Product price " +  price + " " + "is not in system");
+        }
+        else{
+            t.inOrder();
+        }
     }
 
     //1.5 delete a product by product code
