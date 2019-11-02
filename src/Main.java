@@ -32,7 +32,7 @@ public class Main {
             System.out.println("5. Delete by a product code");
             System.out.println("6. Simple balancing");
             System.out.println("7. Count number of products");
-            System.out.println("8. Search product by price");
+            System.out.println("8. Search product the price is higher or equal to the price provided");
             System.out.println("0. Exit");
             System.out.println("Enter your choice: ");
             try {
