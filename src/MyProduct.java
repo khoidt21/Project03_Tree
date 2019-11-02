@@ -22,7 +22,8 @@ public class MyProduct {
     String c_quantity = "Quantity";
     String c_saled = "Saled";
     String c_price = "Price";
-
+    String c_height = "Height";
+    
     public MyProduct() {
         tree = new MyBSTree();
     }
@@ -106,6 +107,7 @@ public class MyProduct {
 
     //1.3 BFT a tree
     public void BFT() {
+        System.out.println(String.format("%s %9s %23s %6s %9s", c_code, c_name, c_quantity, c_saled, c_price));
         tree.BFT();
     }
 
@@ -175,6 +177,7 @@ public class MyProduct {
     // calPrintTreeHeight
 
     public void calPrintTreeHeight() {
+        System.out.println(String.format("%s %9s %23s %6s %9s %11s", c_code, c_name, c_quantity, c_saled, c_price,c_height));
         tree.calPrintTreeHeight(0);
     }
 
