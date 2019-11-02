@@ -136,8 +136,8 @@ public class MyProduct {
         } while (check);
         System.out.println("Inforation of product price " + price);
         tree.searchInOrderPrice(price);
-
     }
+    
 
     //1.5 delete a product by product code
     public void delete() {
