@@ -156,7 +156,7 @@ public class MyProduct {
         code = input.nextLine();
         tree.delete(code);
         System.out.println("Product code " + code + " " + "has been deleted");
-
+        
     }
 
     //1.6 simply balancing a tree

@@ -62,6 +62,7 @@ public class MyBSTree {
     }
 
     public void inOrderTreeSearchPrice(Node<Product> root, double price, MyBSTree myBSTree) {
+        // tieu chi 1 nang cao
         if (root == null) {
             return;
         }
@@ -136,8 +137,8 @@ public class MyBSTree {
         }
     }
 
-    // phuong thuc cho tieu chi nang cao 3
     
+    // Tieu chi nang cao 3
     public void calPrintTreeHeight(int height){
         calMyBSTTreeHeight(root, height);
     }
@@ -150,8 +151,6 @@ public class MyBSTree {
         calMyBSTTreeHeight(root.left, height + 1);
         System.out.println(root.info + " " +  root.height + " ");
         calMyBSTTreeHeight(root.right, height + 1);
-        
-
     }
 
     //balance a tree
@@ -213,11 +212,12 @@ public class MyBSTree {
 
     Node deleteRec(Node<Product> root, String key) {
         if (root == null) {
+            System.out.println("Code of product is not in system");
             return root;
         }
         if (key.compareTo(root.info.getCode()) < 0) {
             root.left = deleteRec(root.left, key);
-        } else if (key.compareTo(root.info.getCode()) < 0) {
+        } else if (key.compareTo(root.info.getCode()) > 0) {
             root.right = deleteRec(root.right, key);
         } else {
             if (root.left == null) {
@@ -228,6 +228,7 @@ public class MyBSTree {
             root.info = minValue(root.right);
             root.right = deleteRec(root.right, root.info.getCode());
         }
+        
         return root;
     }
 
@@ -239,5 +240,5 @@ public class MyBSTree {
         }
         return minv;
     }
-
+    
 }
