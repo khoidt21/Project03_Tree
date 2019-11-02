@@ -142,4 +142,8 @@ public class MyProduct {
     public int size() {
        return tree.count();
     }
+    // print size products in the tree
+    public void printSizeProducts(){
+        System.out.println("Number of products " + size()); 
+    }
 }

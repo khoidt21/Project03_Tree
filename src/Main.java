@@ -70,7 +70,7 @@ public class Main {
                         break;
                     case 7:
                         // count number of products
-                        myProduct.size();     
+                        myProduct.printSizeProducts();
                         break;
                     case 0:
                         System.out.println("Exiting Program...");
